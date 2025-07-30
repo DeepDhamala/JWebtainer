@@ -137,4 +137,24 @@ public class HttpRequest implements HttpServletRequest {
     public void addHeader(String headerName, String headerValue) {
         headers.put(headerName, new String[]{headerValue});
     }
+
+    /** Returns all parameters of the request.
+     *
+     * @return a map containing all request parameters, where the key is the
+     * parameter name and the value is an array of parameter values
+     */
+    public Map<String, String[]> getParameters() {
+        return parameters;
+    }
+
+    /**
+     * Returns all headers of the request.
+     *
+     * @return a map containing all request headers, where the key is the
+     * header name and the value is an array of header values
+     */
+    public Map<String, String[]> getHeaders() {
+        return headers;
+    }
+
 }

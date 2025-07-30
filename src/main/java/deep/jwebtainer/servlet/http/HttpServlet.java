@@ -29,7 +29,7 @@ public abstract class HttpServlet extends GenericServlet {
      * @param request
      * @param response
      */
-    protected void doPost(ServletRequest request, ServletResponse response) {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         // TODO: Send a Error Response not just throw an exception
         throw new UnsupportedOperationException("POST method not implemented");
     }
@@ -76,7 +76,12 @@ public abstract class HttpServlet extends GenericServlet {
         String methodName = request.getMethod();
 
         HttpMethod httpMethod;
-        httpMethod = HttpMethod.valueOf(methodName);
+
+        try {
+            httpMethod = HttpMethod.valueOf(methodName.toUpperCase());
+        } catch (IllegalArgumentException _) {
+            throw new ServletException("Unsupported HTTP method: " + methodName);
+        }
 
         switch (httpMethod) {
             case GET -> doGet(request, response);

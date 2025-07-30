@@ -1,0 +1,77 @@
+package deep.jwebtainer.http;
+
+import deep.jwebtainer.http.adaptor.HttpRequest;
+import org.junit.jupiter.api.Test;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.StringReader;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class RequestParserTest {
+
+    @Test
+    void parse_validRequestWithQueryAndHeaders_shouldParseCorrectly() throws IOException{
+        String rawRequest = """
+                GET /test?param=value http/1.1
+                Host: localhost
+                Connection: keep-alive
+                """;
+
+        BufferedReader reader =
+                new BufferedReader(new StringReader(rawRequest));
+
+        HttpRequest request = RequestParser.parse(reader);
+
+        assertEquals("GET", request.getMethod());
+        assertEquals("/test", request.getRequestURI());
+        assertEquals("value",
+                request.getParameter("param"));
+        assertEquals("localhost", request.getHeader("Host"));
+        assertEquals("keep-alive",
+                request.getHeader("Connection"));
+    }
+
+    @Test
+    void parse_validRequestWithoutQuery_shouldParseURIAndHeaders() throws IOException{
+        String rawRequest = """
+                POST /submit HTTP/1.1
+                Content-Type: application/json
+                """;
+        BufferedReader reader = new BufferedReader(new StringReader(rawRequest));
+        HttpRequest request = RequestParser.parse(reader);
+
+        assertEquals("POST", request.getMethod());
+        assertEquals("/submit", request.getRequestURI());
+        assertTrue(request.getParameters().isEmpty());
+        assertEquals("application/json",
+                request.getHeader("Content-Type"));
+    }
+
+    @Test
+    void parse_invalidRequestLineParts_shouldThrow() {
+        String invalidRequestLine = "INVALID_REQUEST_LINE";
+
+        BufferedReader reader = new BufferedReader(new StringReader(invalidRequestLine + "\n"));
+
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
+                () -> RequestParser.parse(reader));
+        assertTrue(ex.getMessage().contains("Invalid HTTP request line"));
+    }
+
+    @Test
+    void parse_malformedHeaderLine_shouldThrow() {
+        String rawRequest =
+                """
+                GET /test HTTP/1.1
+                BadHeaderLine withoutColon
+                """;
+        BufferedReader reader = new BufferedReader(new StringReader(rawRequest));
+
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
+                () -> RequestParser.parse(reader));
+        assertTrue(ex.getMessage().contains("Invalid HTTP header line"));
+    }
+
+}
