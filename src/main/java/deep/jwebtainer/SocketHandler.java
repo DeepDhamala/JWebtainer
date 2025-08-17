@@ -1,6 +1,6 @@
 package deep.jwebtainer;
 
-import deep.jwebtainer.http.RequestParser;
+import deep.jwebtainer.http.HttpRequestParser;
 import deep.jwebtainer.http.adaptor.HttpResponse;
 import deep.jwebtainer.servlet.ServletException;
 import deep.jwebtainer.servlet.http.HttpServlet;
@@ -61,7 +61,7 @@ public class SocketHandler implements Runnable {
              OutputStream outputStream = socket.getOutputStream();
              PrintWriter writer = new PrintWriter(outputStream, true)) {
 
-            HttpServletRequest request = RequestParser.parse(reader);
+            HttpServletRequest request = HttpRequestParser.parse(reader);
 
             HttpServlet servlet =
                     (HttpServlet) servletRegistry

@@ -26,7 +26,7 @@ public final class Main {
     private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
     /**
      * The port on which the web container will listen for incoming requests.
-     * This is set to 8080 by default, but can be changed in the configuration.
+     * This is set to 8080 by default but can be changed in the configuration.
      */
     private static final int PORT = 8080;
 

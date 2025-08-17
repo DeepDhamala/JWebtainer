@@ -6,11 +6,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 /**
- * The RequestParser class is responsible for parsing HTTP requests from a
+ * The HttpRequestParser class is responsible for parsing HTTP requests from a
  * BufferedReader. It reads the request line, headers, and query parameters
  * and constructs an HttpRequest object.
  */
-public final class RequestParser {
+public final class HttpRequestParser {
     /**
      * The expected number of parts in the first line of an HTTP request.
      * This is typically 3 parts: method, request URI, and HTTP version.
@@ -20,7 +20,7 @@ public final class RequestParser {
     /**
      * Private constructor to prevent instantiation of this utility class.
      */
-    private RequestParser() {
+    private HttpRequestParser() {
         throw new UnsupportedOperationException(
                 "Utility class cannot be instantiated");
     }
@@ -74,12 +74,25 @@ public final class RequestParser {
             httpRequest.addHeader(headerName, headerValue);
         }
 
+        if ("POST".equals(method)) {
+            String contentLengthHeader = httpRequest.getHeader("Content-Length");
+            if (contentLengthHeader != null && Integer.parseInt(contentLengthHeader) > 0) {
+                StringBuilder body = new StringBuilder();
+            while(in.ready()) {
+                body.append((char) in.read());
+            }
+                if (!body.isEmpty()) {
+                    parseRequestParameters(httpRequest, body.toString());
+                }
+            }
+
+        }
         return httpRequest;
     }
 
 
     /**
-     * Parses the query string from the request URI and adds parameters to
+     * Parses the query string and form-data from the request URI and adds parameters to
      * the HttpRequest object.
      *
      * @param httpRequest the HttpRequest object to add parameters to
