@@ -91,12 +91,40 @@ public class SocketHandler implements Runnable {
         }
     }
 
-    private void sendErrorResponse(PrintWriter writer, int statusCode,
-                                   String message) {
-        writer.printf(String.format("HTTP/1.1 %d %s\r%n", statusCode, message));
-        writer.println("Content-Type: text/html");
+    /**
+     * Sends a classic HTTP error response to the client with a simple HTML page.
+     * @param writer     the PrintWriter connected to the client socket used to send the response
+     * @param statusCode the HTTP status code (e.g., 404, 500)
+     * @param message    the HTTP status message (e.g., "Not Found", "Internal Server Error")
+     */
+    private void sendErrorResponse(PrintWriter writer, int statusCode, String message) {
+        writer.printf("HTTP/1.1 %d %s\r\n", statusCode, message);
+        writer.println("Content-Type: text/html; charset=UTF-8");
         writer.println("Connection: close");
         writer.println();
-        writer.printf("<html><body>%s</body></html>", message);
+        writer.printf(
+                "<!DOCTYPE html>" +
+                        "<html>" +
+                        "<head>" +
+                        "  <meta charset='UTF-8'>" +
+                        "  <title>HTTP Status %d – %s</title>" +
+                        "  <style type='text/css'>" +
+                        "    body {font-family: Tahoma, Arial, sans-serif; background-color: #fff; color: #000;}" +
+                        "    h1 {font-size: 22px; font-weight: bold; margin: 20px 0 10px;}" +
+                        "    p {margin: 5px 0;}" +
+                        "    hr {border: none; border-top: 1px solid #aaa; margin: 20px 0;}" +
+                        "    .footer {font-size: 12px; color: #555;}" +
+                        "  </style>" +
+                        "</head>" +
+                        "<body>" +
+                        "  <h1>HTTP Status %d – %s</h1>" +
+                        "  <p>The server encountered an error while processing your request.</p>" +
+                        "  <hr/>" +
+                        "  <div class='footer'>JWebtainer (Java Web Container)</div>" +
+                        "</body>" +
+                        "</html>",
+                statusCode, message, statusCode, message
+        );
     }
+
 }

@@ -47,6 +47,8 @@ pure Java. It aims to provide a lightweight, embeddable alternative to full-fled
    git clone
    cd JWebtainer
    ```
+## Quick Start
+Just run `main` method in `java/deep/jwebtainer/Main.java` an on your browser `http://localhost:8080/`
 
 ## Usage
 

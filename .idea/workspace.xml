@@ -6,12 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d754e11f-9e19-4049-b840-5ab9dce6f752" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/deep/jwebtainer/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/deep/jwebtainer/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/deep/jwebtainer/SocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/deep/jwebtainer/SocketHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/deep/jwebtainer/http/RequestParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/deep/jwebtainer/http/HttpRequestParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/deep/jwebtainer/servlet/http/WelcomeHttpServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/deep/jwebtainer/servlet/http/WelcomeHttpServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/deep/jwebtainer/http/RequestParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/deep/jwebtainer/http/HttpRequestParserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/deep/jwebtainer/SocketHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/deep/jwebtainer/SocketHandlerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,29 +78,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.HttpRequestParserTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HttpRequestParserTest.parse_validPostRequestWithBody_shouldParseBodyParameters.executor&quot;: &quot;Debug&quot;,
-    &quot;Gradle.HttpRequestParserTest.parse_validRequestWithQueryAndHeaders_shouldParseCorrectly.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HttpRequestParserTest.parse_validRequestWithoutQuery_shouldParseURIAndHeaders.executor&quot;: &quot;Debug&quot;,
-    &quot;Gradle.JWebtainer [:deep.jwebtainer.Main.main()].executor&quot;: &quot;Debug&quot;,
-    &quot;Gradle.JWebtainer [check].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.JWebtainer [test].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/handle-post-request&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/home/deep/Code/personal-projects/JWebtainer/src/main/java/np/com/deepdhamala/Main.java&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.qodana&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.HttpRequestParserTest.executor": "Run",
+    "Gradle.HttpRequestParserTest.parse_validPostRequestWithBody_shouldParseBodyParameters.executor": "Debug",
+    "Gradle.HttpRequestParserTest.parse_validRequestWithQueryAndHeaders_shouldParseCorrectly.executor": "Run",
+    "Gradle.HttpRequestParserTest.parse_validRequestWithoutQuery_shouldParseURIAndHeaders.executor": "Debug",
+    "Gradle.JWebtainer [:deep.jwebtainer.Main.main()].executor": "Run",
+    "Gradle.JWebtainer [check].executor": "Run",
+    "Gradle.JWebtainer [test].executor": "Run",
+    "Gradle.SocketHandlerTest.run_servletNotFound_sends404.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "/home/deep/Code/personal-projects/JWebtainer/src/main/java/np/com/deepdhamala/Main.java",
+    "settings.editor.selected.configurable": "settings.qodana",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="np.com.deepdhamala.servlet" />
@@ -171,30 +169,6 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="HttpRequestParserTest.parse_validRequestWithoutQuery_shouldParseURIAndHeaders" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;deep.jwebtainer.http.HttpRequestParserTest.parse_validRequestWithoutQuery_shouldParseURIAndHeaders&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration name="JWebtainer [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -217,13 +191,37 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="SocketHandlerTest.run_servletNotFound_sends404" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;deep.jwebtainer.SocketHandlerTest.run_servletNotFound_sends404&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.JWebtainer [test]" />
+        <item itemvalue="Gradle.SocketHandlerTest.run_servletNotFound_sends404" />
         <item itemvalue="Gradle.HttpRequestParserTest.parse_validPostRequestWithBody_shouldParseBodyParameters" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Gradle.HttpRequestParserTest" />
-        <item itemvalue="Gradle.HttpRequestParserTest.parse_validRequestWithoutQuery_shouldParseURIAndHeaders" />
       </list>
     </recent_temporary>
   </component>
@@ -247,6 +245,7 @@
       <workItem from="1753878532780" duration="3481000" />
       <workItem from="1755412417316" duration="2690000" />
       <workItem from="1755416036203" duration="7014000" />
+      <workItem from="1757859538899" duration="1358000" />
     </task>
     <servers />
   </component>

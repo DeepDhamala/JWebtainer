@@ -93,7 +93,12 @@ class SocketHandlerTest {
 
         String responseString = byteArrayOutputStream.toString();
 
-        assertTrue(responseString.contains("HTTP/1.1 404 Not Found"));
-        assertTrue(responseString.contains("<html><body>Not Found</body></html>"));
+        assertTrue(responseString.contains("HTTP/1.1 404 Not Found"), "Response should contain 404 status");
+        assertTrue(responseString.contains("<h1>HTTP Status 404 – Not Found</h1>"),
+                "Response should contain the proper error heading");
+        assertTrue(responseString.contains("The server encountered an error while processing your request."),
+                "Response should contain the standard error message");
+        assertTrue(responseString.contains("JWebtainer (Java Web Container)"),
+                "Response should contain footer info");
     }
 }
